@@ -12,22 +12,15 @@ const userRoutes = require('./routes/userRoutes');
 app.get('/',(req,res)=>{
     res.send("user created!")
 })
-app.get('/dashboard',(req,res)=>{
-    res.send("Dashboard")
-})
+
 app.post("/token", (req,res) => {
-
     let token = req.body.token;
-
-
     try {
         jwt.verify(token, "lambofgod");
         res.send("OK");
     } catch (error) {
         res.status(500).send("Token EXPIRE!");
-    }
-
-    
+    }  
 
 })
 
@@ -35,3 +28,10 @@ app.use('/api/users', userRoutes);
 app.listen(3000,()=>{
     console.log("Server is running ...");
 })
+
+
+
+
+
+
+
